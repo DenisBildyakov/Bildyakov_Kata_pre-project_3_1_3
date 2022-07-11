@@ -39,11 +39,11 @@ public class IndexController {
             userRole.add(user);
             anyRole.add(admin);
             anyRole.add(user);
-            userService.addUser(new User("Maha", "Smirnova", 33, "admin@mail.ru", bCryptPasswordEncoder.encode("admin@mail.ru"), adminRole));
-            userService.addUser(new User("Misha", "Krokodilov", 24, "user@mail.ru", bCryptPasswordEncoder.encode("user@mail.ru"), userRole));
-            userService.addUser(new User("Dima", "Borisov", 18, "dimab@mail.ru", bCryptPasswordEncoder.encode("dimab@mail.ru"), userRole));
-            userService.addUser(new User("Vasya", "Pupkin", 16, "vasyap@mail.ru", bCryptPasswordEncoder.encode("vasyap@mail.ru"), userRole));
-            userService.addUser(new User("Kostya", "Gradov", 52, "kostyag@mail.ru", bCryptPasswordEncoder.encode("kostyag@mail.ru"), anyRole));
+            userService.addUser(new User("Maha", "Smirnova", 33, "admin@mail.ru", "admin@mail.ru", adminRole));
+            userService.addUser(new User("Misha", "Krokodilov", 24, "user@mail.ru", "user@mail.ru", userRole));
+            userService.addUser(new User("Dima", "Borisov", 18, "dimab@mail.ru", "dimab@mail.ru", userRole));
+            userService.addUser(new User("Vasya", "Pupkin", 16, "vasyap@mail.ru", "vasyap@mail.ru", userRole));
+            userService.addUser(new User("Kostya", "Gradov", 52, "kostyag@mail.ru", "kostyag@mail.ru", anyRole));
         }
         return "redirect:/login";
     }

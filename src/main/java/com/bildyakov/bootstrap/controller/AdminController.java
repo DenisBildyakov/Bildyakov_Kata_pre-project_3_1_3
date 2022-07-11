@@ -51,7 +51,7 @@ public class AdminController {
 
     @PostMapping("/admin")
     public String createUser(@ModelAttribute("user") User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userService.addUser(user);
         return "redirect:/admin";
     }
@@ -60,15 +60,15 @@ public class AdminController {
     @PatchMapping("/admin/edit/{id}")
     public String updateUser(Model model, @ModelAttribute("editUser") User user, @PathVariable(value = "id") long id) {
         model.addAttribute("editUser", userService.findUserById(id));
+//
+//        if (user.getPassword() == null ||
+//                user.getPassword().equals("") || user.getPassword().equals(userService.findUserById(id).getPassword())) {
+//            user.setPassword(userService.findUserById(id).getPassword());
+//        } else {
+//            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+//        }
 
-        if (user.getPassword() == null ||
-                user.getPassword().equals("") || user.getPassword().equals(userService.findUserById(id).getPassword())) {
-            user.setPassword(userService.findUserById(id).getPassword());
-        } else {
-            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        }
-
-        userService.addUser(user);
+        userService.editUser(user, id);
         return "redirect:/admin";
     }
 
